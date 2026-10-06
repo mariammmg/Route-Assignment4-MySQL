@@ -5,13 +5,23 @@ USE Store;
 Select * from Products;
 
 CREATE USER 'store_user'@'localhost' IDENTIFIED BY 'password123';
-GRANT INSERT, SELECT,UPDATE ON Store.* TO 'store_user'@'localhost';
-Show GRANTS FOR 'store_user'@'localhost';
 
-ReVoke UPDATE ON Store.* FROM 'store_user'@'localhost';
+GRANT SELECT, INSERT, UPDATE
+ON Store.*
+TO 'store_user'@'localhost';
 
-Select CURRENT_USER();
+SHOW GRANTS FOR 'store_user'@'localhost';
 
-GRANT DELETE ON Store.* TO 'store_user'@'localhost';
+REVOKE UPDATE
+ON Store.*
+FROM 'store_user'@'localhost';
+
+GRANT DELETE
+ON Store.Sales
+TO 'store_user'@'localhost';
+
+SHOW GRANTS FOR 'store_user'@'localhost';
+
+
 
 
